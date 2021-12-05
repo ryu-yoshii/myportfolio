@@ -15,13 +15,13 @@
         <h2 class="sign-up-title">新規登録</h2>
         <form class="mail-form form">
             <label for="email">メールアドレス</label>
-            <input type="email" id="email" v-model="mailaddress"/>
+            <input type="email" id="email" >
         </form>
         <form class="pass-form form">
             <label for="password">パスワード</label>
-            <input type="password"  id="password" v-model="password"/>
+            <input type="password"  id="password" >
         </form>
-        <button id="sign-up-btn" @click="signUp">登録</button>
+        <button id="sign-up-btn" @click="SignUp">登録</button>
         </div>
     </div> 
     <footer>
@@ -32,18 +32,29 @@
 </div>
 </template> 
 <script>
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword } from 'firebase/auth'
+
+
 export default {
-    // layout: 'default'
-    methods:{
-        // signUp:function(){
-        //     firebase.auth().createUserWithEmailAndPassword(this.mailaddress, this.password)
-        //     .then(
-        //         // 成功時の処理
-        //     )
-        //     .catch(
-        //         // 失敗時の処理
-        //     )
-        // }
+    data () {
+        return {
+            emailAddress: 'test@example.com',
+            password: 'Password',
+        }
+    },
+    methods: {
+        
+    SignUp () {
+        const auth = getAuth()
+        createUserWithEmailAndPassword(auth, this.emailAddress, this.password)
+        .then((userCredential) => {
+            console.log('user created')
+        })
+        .catch((error) => {
+            alert(error.message)
+            console.error(error)
+        })
+    }
     }
 }
 </script>
