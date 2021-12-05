@@ -4,7 +4,7 @@
   <div id="login-wrapper">
     <header id="header">
         <h1 id="title">
-        Learning  records
+        Learning  recordsテスト
         </h1>
         <ul id="header-list">
             <li><router-link to="/">login</router-link></li>
