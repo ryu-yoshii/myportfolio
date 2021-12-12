@@ -16,13 +16,14 @@ const firebaseConfig = {
   projectId: "portfolio-e51d6",
   storageBucket: "portfolio-e51d6.appspot.com",
   messagingSenderId: "509447176150",
-  appId: "1:509447176150:web:2a6123fa3bd2c7b2b8ee77",
-  measurementId: "G-BWR3EMTCTH"
+  appId: "1:509447176150:web:1b89e7da62beb0dbb8ee77",
+  measurementId: "G-FFM8LPYZEX"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+console.log(analytics)
 Vue.config.productionTip = false;
 
 new Vue({
