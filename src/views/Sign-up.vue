@@ -6,9 +6,9 @@
         Learning  records
         </h1>
         <ul id="header-list">
-            <li><router-link to="/">login</router-link></li>
-            <li><router-link to="/Post">post</router-link></li>
+            <li><router-link to="/home">mypage</router-link></li>
             <li><router-link to="/graph">graph</router-link></li>
+            <li><router-link to="/">logaut</router-link></li>
         </ul>
     </header>
         <div id="sign-up">
@@ -48,9 +48,11 @@ export default {
         const auth = getAuth()
         createUserWithEmailAndPassword(auth, this.emailAddress, this.password)
         .then(
-            (userCredential) => {
-                console.log(userCredential)
-            console.log('user created')
+            () => {
+            // console.log(userCredential)
+            // console.log('user created')
+            this.$router.push("/Home");
+            
         })
         .catch((error) => {
             alert(error.message)

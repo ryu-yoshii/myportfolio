@@ -6,9 +6,9 @@
             Learning  records
             </h1>
             <ul id="header-list">
-                <li><router-link to="/">login</router-link></li>
-                <li><router-link to="/Post">post</router-link></li>
+                <li><router-link to="/Home">mypage</router-link></li>
                 <li><router-link to="/graph">graph</router-link></li>
+                <li><router-link to="/">logout</router-link></li>
             </ul>
         </header>
         <section class="result">
