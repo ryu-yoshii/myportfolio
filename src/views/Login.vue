@@ -47,11 +47,12 @@ export default {
             const auth = getAuth();
             signInWithEmailAndPassword(auth, this.emailAddress, this.password)
             .then(
-                () => {
+                (userCredential) => {
                     // Signed in
-                    // const user = userCredential.user;
+                    const user = userCredential.user;
                     // ...
-                    // console.log(user)
+                    console.log(userCredential)
+                    console.log(user.uid)
                     console.log("ログイン成功")
                     this.$router.push("/Home");
                 })
