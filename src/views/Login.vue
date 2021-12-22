@@ -51,7 +51,7 @@ export default {
                     // Signed in
                     const user = userCredential.user;
                     // ...
-                    console.log(userCredential)
+                    // console.log(userCredential)
                     console.log(user.uid)
                     console.log("ログイン成功")
                     this.$router.push("/Home");
