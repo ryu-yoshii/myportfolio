@@ -26,13 +26,16 @@
     </div> 
     <footer>
     <p>
+        <!-- <h3>{{$store.getters.text}}</h3> -->
         <small>&copy;2021</small>
     </p>
     </footer>
 </div>
 </template> 
 <script>
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+// console.log($store.getters.text)
+// import { onAuthStateChanged } from "firebase/auth";
 
 
 export default {
@@ -40,29 +43,40 @@ export default {
         return {
             emailAddress: '',
             password: '',
+            // user:'',
+            // uid:"",
         }
     },
     methods: {
         Login () {
+            console.log(this.password);
             const auth = getAuth();
             signInWithEmailAndPassword(auth, this.emailAddress, this.password)
             .then(
                 (userCredential) => {
-                    // Signed in
                     const user = userCredential.user;
-                    // ...
-                    // console.log(userCredential)
-                    console.log(user.uid)
+                    
                     console.log("ログイン成功")
                     this.$router.push("/Home");
                 })
             .catch((error) => {
-                // const errorCode = error.code;
-                // const errorMessage = error.message;
                 console.log(error)
                 console.log("ログイン失敗")
             });
-        }
+            // --------ログイン情報をVueXに持たせる３
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // User is signed in, see docs for a list of available properties
+                    // https://firebase.google.com/docs/reference/js/firebase.User
+                    const uid = user.uid;
+
+                    console.log(user)
+                    console.log(this.$store.state.user)
+                } else {
+                    // User is signed out
+                }
+            });
+        },
     }
 }
 </script>

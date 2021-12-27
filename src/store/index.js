@@ -5,12 +5,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user:{},
+    user:["ここにユーザー情報を入れたい"],
     isSignIn: false,
   },
   mutations: {
     onAuthStateChanged(state, user){
       state.user = user;
+      
     },
     onUserStatusChanged(state, isSignIn){
       state.isSignIn = isSignIn;
@@ -22,8 +23,15 @@ export default new Vuex.Store({
     },
     isSignIn(state){
       return state.isSignIn;
+    },
+    text(state){
+      return state.message;
     }
   },
-  actions: {},
+  // actions: {
+  //   user_info_add: function(context){
+  //     context.commit("onAuthStateChanged")
+  //   }
+  // },
   modules: {},
 });
