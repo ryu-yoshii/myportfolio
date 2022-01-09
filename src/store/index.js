@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     user:["ここにユーザー情報をいれたい"],
     isSignIn: false,
+    posts:[],
   },
   mutations: {
     onAuthStateChanged(state, user){
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     onUserStatusChanged(state, isSignIn){
       state.isSignIn = isSignIn;
     }
+    // postadd(state, )
   },
   getters: {
     user(state){

@@ -32,8 +32,9 @@
 </div>
 </template> 
 <script>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
+import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
+// import { initializeApp } from "firebase/app"
+// import { getFirestore } from "firebase/firestore"
 
 export default {
     data () {
@@ -43,7 +44,6 @@ export default {
         }
     },
     methods: {
-        
     SignUp () {
         const auth = getAuth()
         createUserWithEmailAndPassword(auth, this.emailAddress, this.password)
@@ -56,7 +56,7 @@ export default {
         })
         .catch((error) => {
             alert(error.message)
-            console.error(error)
+            console.error("ログイン失敗")
         })
     }
     }

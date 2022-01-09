@@ -47,6 +47,8 @@
 </div>
 </template>
 <script>
+// import { getFirestore } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 export default {
     data() {
         return {
@@ -74,13 +76,25 @@ export default {
                 hour:this.now,
                 time:this.selected
             }
-            this.posts.push(post_object)
-            
+            this.posts.push(post_object);
+
+            // データの追加
+            // try {
+            // const docRef = await addDoc(collection(db, "users"), {
+            //     first: "Ada",
+            //     last: "Lovelace",
+            //     born: 1815
+            // });
+            // console.log("Document written with ID: ", docRef.id);
+            // } catch (e) {
+            // console.error("Error adding document: ", e);
+            // }
         },
         tweet: function(){
             this.posted = "ツイートしました"
             console.log("テスト３");
         },
+        
     },
     
 }

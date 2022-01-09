@@ -34,17 +34,12 @@
 </template> 
 <script>
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-// console.log($store.getters.text)
-// import { onAuthStateChanged } from "firebase/auth";
-
 
 export default {
     data () {
         return {
             emailAddress: '',
             password: '',
-            // user:'',
-            // uid:"",
         }
     },
     methods: {
@@ -54,22 +49,23 @@ export default {
             .then(
                 (userCredential) => {
                     const user = userCredential.user;
+                    console.log(user);
                     console.log("ログイン成功")
-                    this.$router.push("/Home");
+                    this.$router.push("/Home")
                 })
             .catch((error) => {
                 console.log(error)
                 console.log("ログイン失敗")
             });
-            // --------ログイン情報をVueXに持たせる３
+            // --------ログイン情報をVueXに持たせる
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     // User is signed in, see docs for a list of available properties
                     // https://firebase.google.com/docs/reference/js/firebase.User
                     const uid = user.uid;
-                    // user = uid;
-                    console.log(user)
-                    console.log(uid)
+                    user = uid;
+                    // console.log(user)
+                    // console.log(uid)
                     this.$store.commit("onAuthStateChanged",user)
                     console.log(this.$store.state.user)
                     // const user = auth.currentUser;

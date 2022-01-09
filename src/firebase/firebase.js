@@ -1,4 +1,3 @@
-
 const firebaseConfig = {
     apiKey: "AIzaSyA1Cw7U-3JkyKfTXyE1TssDjmaiDMA_mJc",
     authDomain: "portfolio-e51d6.firebaseapp.com",
