@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user:["ここにユーザー情報を入れたい"],
+    user:["ここにユーザー情報をいれたい"],
     isSignIn: false,
   },
   mutations: {

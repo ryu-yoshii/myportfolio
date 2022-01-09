@@ -49,13 +49,11 @@ export default {
     },
     methods: {
         Login () {
-            console.log(this.password);
             const auth = getAuth();
             signInWithEmailAndPassword(auth, this.emailAddress, this.password)
             .then(
                 (userCredential) => {
                     const user = userCredential.user;
-                    
                     console.log("ログイン成功")
                     this.$router.push("/Home");
                 })
@@ -69,9 +67,14 @@ export default {
                     // User is signed in, see docs for a list of available properties
                     // https://firebase.google.com/docs/reference/js/firebase.User
                     const uid = user.uid;
-
+                    // user = uid;
                     console.log(user)
+                    console.log(uid)
+                    this.$store.commit("onAuthStateChanged",user)
                     console.log(this.$store.state.user)
+                    // const user = auth.currentUser;
+                    // console.log(user);
+                    return user;
                 } else {
                     // User is signed out
                 }
