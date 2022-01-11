@@ -33,9 +33,7 @@
 </template> 
 <script>
 import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
-// import { initializeApp } from "firebase/app"
-// import { getFirestore } from "firebase/firestore"
-
+// import { initializeApp } from "firebase/app";
 export default {
     data () {
         return {

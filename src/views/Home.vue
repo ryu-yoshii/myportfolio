@@ -47,8 +47,17 @@
 </div>
 </template>
 <script>
-// import { getFirestore } from "firebase/firestore";
-import { doc, setDoc } from "firebase/firestore";
+//   Cloud Firestore のインスタンスを初期化
+// import { initializeApp } from "firebase/app"
+// const firebaseApp = initializeApp({
+//     apiKey: "AIzaSyA1Cw7U-3JkyKfTXyE1TssDjmaiDMA_mJc",
+//     authDomain: "portfolio-e51d6.firebaseapp.com",
+//     projectId: "portfolio-e51d6"
+// });
+const db = getFirestore();
+
+import { getFirestore } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 export default {
     data() {
         return {
@@ -61,7 +70,7 @@ export default {
         };
     },
     methods:{
-        post: function(){
+        post: async function(){
             this.posted = "投稿しました"
             let date = new Date();  //new演算子でオブジェクトのインスタンスを生成
             //現在時刻の取得 **ここからはjavascript**
@@ -77,18 +86,17 @@ export default {
                 time:this.selected
             }
             this.posts.push(post_object);
-
             // データの追加
-            // try {
-            // const docRef = await addDoc(collection(db, "users"), {
-            //     first: "Ada",
-            //     last: "Lovelace",
-            //     born: 1815
-            // });
-            // console.log("Document written with ID: ", docRef.id);
-            // } catch (e) {
-            // console.error("Error adding document: ", e);
-            // }
+            try {
+            const docRef = await addDoc(collection(db, "users"), {
+                first: "Ada",
+                last: "Lovelace",
+                born: 1815
+            });
+            console.log("Document written with ID: ", docRef.id);
+            } catch (e) {
+            console.error("Error adding document: ", e);
+            }
         },
         tweet: function(){
             this.posted = "ツイートしました"
