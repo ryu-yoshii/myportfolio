@@ -47,13 +47,6 @@
 </div>
 </template>
 <script>
-//   Cloud Firestore のインスタンスを初期化
-// import { initializeApp } from "firebase/app"
-// const firebaseApp = initializeApp({
-//     apiKey: "AIzaSyA1Cw7U-3JkyKfTXyE1TssDjmaiDMA_mJc",
-//     authDomain: "portfolio-e51d6.firebaseapp.com",
-//     projectId: "portfolio-e51d6"
-// });
 const db = getFirestore();
 
 import { getFirestore } from "firebase/firestore";
@@ -89,9 +82,10 @@ export default {
             // データの追加
             try {
             const docRef = await addDoc(collection(db, "users"), {
-                first: "Ada",
+                text: "Ada",
                 last: "Lovelace",
-                born: 1815
+                born: 1815,
+                test: post_object
             });
             console.log("Document written with ID: ", docRef.id);
             } catch (e) {
