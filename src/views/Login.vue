@@ -64,12 +64,8 @@ export default {
                     // https://firebase.google.com/docs/reference/js/firebase.User
                     const uid = user.uid;
                     user = uid;
-                    // console.log(user)
-                    // console.log(uid)
                     this.$store.commit("onAuthStateChanged",user)
                     console.log(this.$store.state.user)
-                    // const user = auth.currentUser;
-                    // console.log(user);
                     return user;
                 } else {
                     // User is signed out
