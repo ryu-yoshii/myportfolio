@@ -50,7 +50,6 @@
 const db = getFirestore();
 
 import { getFirestore } from "firebase/firestore";
-// import { collection, addDoc } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
 export default {
     data() {
@@ -80,26 +79,11 @@ export default {
                 time:this.selected
             }
             this.posts.push(post_object);
-
             // データの追加
-            // try {
-            // const docRef = await addDoc(collection(db, "users"), {
-            //     text: "テスト",
-            //     last: "Lovelace",
-            //     born: 1815,
-            //     test: post_object
-            // });
-            // console.log("Document written with ID: ", docRef.id);
-            // } catch (e) {
-            // console.error("Error adding document: ", e);
-            // }
-            // データの追加２
-            // Add a new document in collection "cities"
-                let unchi = this.$store.getters.user;
-                let unko = unchi;
-                await setDoc(doc(db, "users", unko), {
-                test: post_object
-                });
+            let id = this.$store.getters.user;
+            await setDoc(doc(db, "users", id), {
+            posts: post_object
+            });
         },
         tweet: function(){
             this.posted = "ツイートしました"

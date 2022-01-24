@@ -60,10 +60,9 @@ export default {
             // --------ログイン情報をVueXに持たせる
             onAuthStateChanged(auth, (user) => {
                 if (user) {
-                    // User is signed in, see docs for a list of available properties
-                    // https://firebase.google.com/docs/reference/js/firebase.User
                     const uid = user.uid;
                     user = uid;
+                    console.log(uid);
                     this.$store.commit("onAuthStateChanged",user)
                     console.log(this.$store.state.user)
                     return user;
