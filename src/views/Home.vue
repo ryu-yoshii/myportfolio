@@ -80,10 +80,14 @@ export default {
             }
             this.posts.push(post_object);
             // データの追加
-            let id = this.$store.getters.user;
-            await setDoc(doc(db, "users", id), {
-            posts: post_object
+            // let id = this.$store.getters.user;
+            let who = this.$store.state.isSignIn;
+            console.log(who);
+            let post = post_object;
+            await setDoc(doc(db, "users",who), {
+            posts: post
             });
+            console.log(who);
         },
         tweet: function(){
             this.posted = "ツイートしました"

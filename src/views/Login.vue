@@ -63,8 +63,9 @@ export default {
                     const uid = user.uid;
                     user = uid;
                     console.log(uid);
-                    this.$store.commit("onAuthStateChanged",user)
-                    console.log(this.$store.state.user)
+                    this.$store.commit("onUserStatusChanged",user);
+                    // console.log(this.$store.state.user)
+                    console.log(this.$store.state.isSignIn);
                     return user;
                 } else {
                     // User is signed out
