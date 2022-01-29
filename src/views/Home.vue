@@ -48,9 +48,8 @@
 </template>
 <script>
 const db = getFirestore();
-
 import { getFirestore } from "firebase/firestore";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 export default {
     data() {
         return {
@@ -66,7 +65,7 @@ export default {
         post: async function(){
             this.posted = "投稿しました"
             let date = new Date();  //new演算子でオブジェクトのインスタンスを生成
-            //現在時刻の取得 **ここからはjavascript**
+            //現在時刻の取得 
             this.now = date.getFullYear() + "年"
             + (Number(date.getMonth()) + 1) + "月" +
             date.getDate() + "日" 
@@ -80,20 +79,17 @@ export default {
             }
             this.posts.push(post_object);
             // データの追加
-            // let id = this.$store.getters.user;
-            let who = this.$store.state.isSignIn;
-            console.log(who);
+            let userid = this.$store.state.isSignIn;
             let post = post_object;
-            await setDoc(doc(db, "users",who), {
-            posts: post
+            const docRef = await addDoc(collection(db, 'users', userid,"post"), {
+            post: post
             });
-            console.log(who);
+            console.log("Document written with ID: ", docRef.id);
         },
         tweet: function(){
             this.posted = "ツイートしました"
             console.log("テスト３");
         },
-        
     },
     
 }

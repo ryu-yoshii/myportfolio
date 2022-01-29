@@ -70,7 +70,8 @@ export default {
                 () => {
                     let user = this.$store.state.isSignIn;
                     setDoc(doc(db, "users", user), {
-                    userid: user
+                    name:user
+                    // name:'テスト'
                     });
                     console.log(user);
                     this.$router.push("/Home");

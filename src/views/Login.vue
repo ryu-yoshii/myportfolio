@@ -64,7 +64,6 @@ export default {
                     user = uid;
                     console.log(uid);
                     this.$store.commit("onUserStatusChanged",user);
-                    // console.log(this.$store.state.user)
                     console.log(this.$store.state.isSignIn);
                     return user;
                 } else {
