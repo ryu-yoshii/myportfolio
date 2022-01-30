@@ -49,7 +49,7 @@
 <script>
 const db = getFirestore();
 import { getFirestore } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 export default {
     data() {
         return {
@@ -60,6 +60,16 @@ export default {
             posted_text:"",
             hour:"",
         };
+    },
+    created : async function(){
+        console.log('created');
+        console.log(this.$store.state.isSignIn);
+        let userid = this.$store.state.isSignIn;
+        const querySnapshot = await getDocs(collection(db, "users", userid, "post"));
+        querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        });
     },
     methods:{
         post: async function(){

@@ -83,45 +83,6 @@ export default {
         }
     }
 }
-
-// .then(
-            //     () => {
-            //         const uid = user.uid;
-            //         user = uid;
-            //         this.$store.commit("onAuthStateChanged",user)
-            //          // データの追加
-            //         let id = this.$store.getters.user;
-            //         console.log(id);
-            //         setDoc(doc(db, "users", id), {
-            //         user: id
-            //         });
-            //         this.$router.push("/Home");
-            // })
-
-
-            // .then(
-            //     (userCredential) => {
-            //     const user = userCredential.user;
-            //     const uid = user.uid;
-            //     user = uid;
-            //     this.$store.commit("onAuthStateChanged",user)
-            //         // データの追加
-            //     let id = this.$store.getters.user;
-            //     console.log(id);
-            //     setDoc(doc(db, "users", id), {
-            //     user: id
-            //     });
-            //     this.$router.push("/Home");
-            // })
-
-            // .then(
-            //     (user) => {
-            //         console.log(user);
-            //         setDoc(doc(db, "users", user), {
-            //         user: user
-            //         });
-            //         this.$router.push("/Home");
-            //     })
 </script>
 <style lang="">
 

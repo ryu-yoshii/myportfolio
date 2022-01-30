@@ -17,7 +17,6 @@ export default new Vuex.Store({
     onUserStatusChanged(state, isSignIn){
       state.isSignIn = isSignIn;
     }
-    // postadd(state, )
   },
   getters: {
     user(state){
