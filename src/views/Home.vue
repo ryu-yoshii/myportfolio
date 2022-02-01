@@ -62,13 +62,16 @@ export default {
         };
     },
     created : async function(){
-        console.log('created');
-        console.log(this.$store.state.isSignIn);
-        let userid = this.$store.state.isSignIn;
-        const querySnapshot = await getDocs(collection(db, "users", userid, "post"));
+        console.log('created'); //createdが動いているか確認
+        let userid = this.$store.state.isSignIn;  //stateからログイン情報を取得
+        //コレクションのすべてのドキュメントを取得する(https://firebase.google.com/docs/firestore/query-data/get-data#get_all_documents_in_a_collection)
+        const querySnapshot = await getDocs(collection(db, "users", userid, "post"));  
         querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+        console.log(doc.id, " => ", doc.data().post.time); 
+        this.posts.push(doc.data().post);
+        console.log(doc);
+         //この部分でデータの中身（hour,text,time）を取得する方法を教えていただきたいです
         });
     },
     methods:{
