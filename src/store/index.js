@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     user:[],
-    isSignIn: false,
+    isSignIn: localStorage.getItem('isSignIn')||false,
     posts:[],
   },
   mutations: {
@@ -16,6 +16,7 @@ export default new Vuex.Store({
     },
     onUserStatusChanged(state, isSignIn){
       state.isSignIn = isSignIn;
+      localStorage.setItem('isSignIn',isSignIn);
     }
   },
   getters: {

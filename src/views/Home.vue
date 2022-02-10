@@ -48,8 +48,8 @@
 </template>
 <script>
 const db = getFirestore();
-import { getFirestore } from "firebase/firestore";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default {
     data() {
         return {
@@ -61,17 +61,31 @@ export default {
             hour:"",
         };
     },
-    created : async function(){
+    async created(){
+        console.log("ここまでは処理が走っている");
+        const auth = getAuth();
+        console.log(auth);
+        onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    const uid = user.uid;
+                    user = uid;
+                    console.log(uid);
+                    this.$store.commit("onUserStatusChanged",user);
+                    console.log(this.$store.state.isSignIn);
+                    return user;
+                } else {
+                    // User is signed out
+                }
+            });
         console.log('created'); //createdが動いているか確認
         let userid = this.$store.state.isSignIn;  //stateからログイン情報を取得
+        console.log(userid);
         //コレクションのすべてのドキュメントを取得する(https://firebase.google.com/docs/firestore/query-data/get-data#get_all_documents_in_a_collection)
         const querySnapshot = await getDocs(collection(db, "users", userid, "post"));  
         querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data().post.time); 
+        // console.log(doc.id, " => ", doc.data().post.time); 
         this.posts.push(doc.data().post);
-        console.log(doc);
-         //この部分でデータの中身（hour,text,time）を取得する方法を教えていただきたいです
+        // console.log(doc);
         });
     },
     methods:{
